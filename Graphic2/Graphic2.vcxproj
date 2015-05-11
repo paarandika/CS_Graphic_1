@@ -84,11 +84,13 @@
   <ItemGroup>
     <ClInclude Include="imageloader.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="room.h" />
     <ClInclude Include="table.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imageloader.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="room.cpp" />
     <ClCompile Include="table.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
