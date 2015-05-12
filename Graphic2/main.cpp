@@ -9,6 +9,24 @@
 
 using namespace std;
 
+int camX = 0, camY = 1, camZ = 2, camLook = 0;
+
+void handleKeypress(unsigned char key, int x, int y) {
+	switch (key) {
+	case 27:
+		exit(0);
+		break;
+	case 120:
+		cout << camY << endl;
+		camX = (camX + 3) % 9;
+		camY = (camY + 3) % 9;
+		camZ = (camZ + 3) % 9;
+		camLook = (camLook + 1) % 3;
+		glutPostRedisplay();
+		break;
+	}
+}
+
 void initRendering() {
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_COLOR_MATERIAL);
@@ -25,6 +43,9 @@ void handleResize(int w, int h) {
 	gluPerspective(45.0, (double)w / (double)h, 1.0, 200.0);
 }
 
+float camPos[] = { 20.0f, 12.0f, -18.0f, -14.0f, 12.0f, 18.0f, 20.0f, -6.0f, 18.0f };
+float camLookY[] = { 0, 0, 5 };
+
 void drawScene() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -35,8 +56,8 @@ void drawScene() {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	//glTranslatef(-4.0f, -1.0f, -28.0f);
-	gluLookAt(20.0f, 12.0f, -18.0f,
-		0.0f, 0.0f, 0.0f,
+	gluLookAt(camPos[camX], camPos[camY], camPos[camZ],
+		0.0f, camLookY[camLook], 0.0f,
 		0.0f, 1.0f, 0.0f);
 
 	glEnable(GL_DEPTH_TEST);
@@ -58,7 +79,7 @@ int main(int argc, char** argv) {
 	initRendering();
 
 	glutDisplayFunc(drawScene);
-	//glutKeyboardFunc(handleKeypress);
+	glutKeyboardFunc(handleKeypress);
 	glutReshapeFunc(handleResize);
 
 	glutMainLoop();
