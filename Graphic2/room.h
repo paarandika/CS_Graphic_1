@@ -1,4 +1,6 @@
 #pragma once
+#include <glut.h>
+
 class Room {
 public:
 	Room();

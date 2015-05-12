@@ -5,6 +5,7 @@
 
 #include "imageloader.h"
 #include "table.h"
+#include "room.h"
 
 using namespace std;
 
@@ -33,8 +34,8 @@ void drawScene() {
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	glTranslatef(-4.0f, -1.0f, -28.0f);
-	gluLookAt(3.0f, 1.0f, 6.0f,
+	//glTranslatef(-4.0f, -1.0f, -28.0f);
+	gluLookAt(20.0f, 12.0f, -18.0f,
 		0.0f, 0.0f, 0.0f,
 		0.0f, 1.0f, 0.0f);
 
@@ -43,7 +44,7 @@ void drawScene() {
 
 	//glColor3f(1.0f, 1.0f, 0.0f);
 	Table::drawTable();
-
+	Room::createRoom();
 	glutSwapBuffers();
 }
 
