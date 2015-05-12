@@ -6,6 +6,7 @@
 #include "imageloader.h"
 #include "table.h"
 #include "room.h"
+#include "GlobalSphere.h"
 
 using namespace std;
 
@@ -66,6 +67,7 @@ void drawScene() {
 	//glColor3f(1.0f, 1.0f, 0.0f);
 	Table::drawTable();
 	Room::createRoom();
+	GlobalSphere::drawGlobalSphere();
 	glutSwapBuffers();
 }
 
@@ -75,7 +77,7 @@ int main(int argc, char** argv) {
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(800, 600);
 
-	glutCreateWindow("haminiyan!!!");
+	glutCreateWindow("Computer Graphics - Scene 1");
 	initRendering();
 
 	glutDisplayFunc(drawScene);

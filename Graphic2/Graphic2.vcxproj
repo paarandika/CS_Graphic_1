@@ -82,12 +82,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="GlobalSphere.h" />
     <ClInclude Include="imageloader.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="room.h" />
     <ClInclude Include="table.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GlobalSphere.cpp" />
     <ClCompile Include="imageloader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="room.cpp" />
