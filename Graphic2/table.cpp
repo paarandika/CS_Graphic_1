@@ -10,6 +10,17 @@ Table::~Table() {
 
 
 void Table::drawTable() {
+
+	Image* image = loadBMP("res/wood.bmp");
+	GLuint	_textureId = Texture::loadTexture(image);
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, _textureId);
+
+	//Bottom
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
 	glBegin(GL_QUADS);
 
 	//Front
@@ -42,9 +53,13 @@ void Table::drawTable() {
 
 	//Top
 	glNormal3f(0.0f, 1.0f, 0.0f);
+	glTexCoord2f(0.0f, 0.0f);
 	glVertex3f(6.0f, 0.5f, 9.0f);
+	glTexCoord2f(1.0f, 0.0f);
 	glVertex3f(-6.0f, 0.5f, 9.0f);
+	glTexCoord2f(0.0f, 1.0f);
 	glVertex3f(-6.0f, 0.5f, -9.0f);
+	glTexCoord2f(1.0f, 1.0f);
 	glVertex3f(6.0f, 0.5f, -9.0f);
 
 	//Bottom
@@ -54,7 +69,7 @@ void Table::drawTable() {
 	glVertex3f(-6.0f, -0.5f, -9.0f);
 	glVertex3f(6.0f, -0.5f, -9.0f);
 	glEnd();
-
+	glDisable(GL_TEXTURE_2D);
 	//front right leg
 	drawLeg(3.0f, 7.0f);
 
