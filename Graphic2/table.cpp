@@ -10,9 +10,11 @@ Table::~Table() {
 
 
 void Table::drawTable() {
+	glColor3f(1.0, 1.0, 1.0);
 
 	Image* image = loadBMP("res/wood.bmp");
 	GLuint	_textureId = Texture::loadTexture(image);
+	delete image;
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, _textureId);
