@@ -11,7 +11,7 @@
 
 using namespace std;
 
-int camX = 0, camY = 1, camZ = 2, camLook = 0;
+int camX = 0, camY = 1, camZ = 2, camLookX = 0, camLookY = 1, camLookZ = 2;
 
 void handleKeypress(unsigned char key, int x, int y) {
 	switch (key) {
@@ -23,7 +23,9 @@ void handleKeypress(unsigned char key, int x, int y) {
 		camX = (camX + 3) % 9;
 		camY = (camY + 3) % 9;
 		camZ = (camZ + 3) % 9;
-		camLook = (camLook + 1) % 3;
+		camLookX = (camLookX + 3) % 9;
+		camLookY = (camLookY + 3) % 9;
+		camLookZ = (camLookZ + 3) % 9;
 		glutPostRedisplay();
 		break;
 	}
@@ -46,7 +48,7 @@ void handleResize(int w, int h) {
 }
 
 float camPos[] = { 20.0f, 12.0f, -18.0f, -14.0f, 12.0f, 18.0f, 20.0f, -6.0f, 18.0f };
-float camLookY[] = { 0, 0, 5 };
+float camLook[] = { 0, 0, 0, 3, 0, 0, 0, 5, 0 };
 
 void drawScene() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -59,7 +61,7 @@ void drawScene() {
 	glLoadIdentity();
 	//glTranslatef(-4.0f, -1.0f, -28.0f);
 	gluLookAt(camPos[camX], camPos[camY], camPos[camZ],
-		0.0f, camLookY[camLook], 0.0f,
+		camLook[camLookX], camLook[camLookY], camLook[camLookZ],
 		0.0f, 1.0f, 0.0f);
 
 	glEnable(GL_DEPTH_TEST);
