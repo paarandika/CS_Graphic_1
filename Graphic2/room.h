@@ -8,5 +8,6 @@ public:
 	Room();
 	~Room();
 	static void createRoom();
+	static void drawFloor();
 };
 
