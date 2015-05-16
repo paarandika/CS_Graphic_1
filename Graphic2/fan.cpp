@@ -122,7 +122,7 @@ void Fan::drawFan()
 		glPopMatrix();
 
 	}
-
+	glPopMatrix();
 
 }
 

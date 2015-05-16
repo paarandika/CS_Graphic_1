@@ -11,7 +11,7 @@ Room::~Room() {
 
 void Room::createRoom() {
 	drawFloor();
-	glColor4f(0.3281, 0.7109, 0.9726, 1);
+	glColor4f(0.3281, 0.7109, 0.9726, 0.6);
 	glBegin(GL_QUADS);
 	glDisable(GL_COLOR_MATERIAL);
 	GLfloat param[4] = { 1, 1, 1, 1.0 };

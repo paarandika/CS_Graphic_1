@@ -71,20 +71,20 @@ void drawScene() {
 	GLfloat ambientLight[] = { 0.2f, 0.2f, 0.2f, 1.0f };
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
 
-	Room::createRoom();
+	
 	Table::drawTable();
 	GlobalSphere::drawGlobalSphere();
 	Fan::drawFan();
 	//GlobalSphere::drawStand();
-	//Reflection::drawReflection();
-	
+	Reflection::drawReflection();
+	Room::createRoom();
 	glutSwapBuffers();
 }
 
 int main(int argc, char** argv) {
 	//Initialize GLUT
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH | GLUT_STENCIL);
 	glutInitWindowSize(800, 600);
 
 	glutCreateWindow("Computer Graphics - Scene 1");
