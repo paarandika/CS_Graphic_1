@@ -1,5 +1,7 @@
 #pragma once
 #include <glut.h>
+#include "imageloader.h"
+#include "texture.h"
 
 class Room {
 public:

@@ -38,6 +38,8 @@ void initRendering() {
 	glEnable(GL_LIGHT0); //Enable light #0
 	//glEnable(GL_LIGHT1); //Enable light #1
 	glEnable(GL_NORMALIZE);
+	glEnable(GL_BLEND); //Enable alpha blending
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Set the blend function
 }
 
 void handleResize(int w, int h) {
@@ -63,15 +65,14 @@ void drawScene() {
 	gluLookAt(camPos[camX], camPos[camY], camPos[camZ],
 		camLook[camLookX], camLook[camLookY], camLook[camLookZ],
 		0.0f, 1.0f, 0.0f);
-
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
 
 	//glColor3f(1.0f, 1.0f, 0.0f);
-	Table::drawTable();
 	Room::createRoom();
+	Table::drawTable();
 	GlobalSphere::drawGlobalSphere();
-	GlobalSphere::drawStand();
+	//GlobalSphere::drawStand();
 	glutSwapBuffers();
 }
 
