@@ -82,6 +82,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="fan.h" />
     <ClInclude Include="GlobalSphere.h" />
     <ClInclude Include="imageloader.h" />
     <ClInclude Include="main.h" />
@@ -91,6 +92,7 @@
     <ClInclude Include="texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="fan.cpp" />
     <ClCompile Include="GlobalSphere.cpp" />
     <ClCompile Include="imageloader.cpp" />
     <ClCompile Include="main.cpp" />
