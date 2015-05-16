@@ -85,6 +85,7 @@
     <ClInclude Include="GlobalSphere.h" />
     <ClInclude Include="imageloader.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="reflection.h" />
     <ClInclude Include="room.h" />
     <ClInclude Include="table.h" />
     <ClInclude Include="texture.h" />
@@ -93,6 +94,7 @@
     <ClCompile Include="GlobalSphere.cpp" />
     <ClCompile Include="imageloader.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="reflection.cpp" />
     <ClCompile Include="room.cpp" />
     <ClCompile Include="table.cpp" />
     <ClCompile Include="texture.cpp" />

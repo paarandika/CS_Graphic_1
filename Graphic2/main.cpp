@@ -8,6 +8,7 @@
 #include "table.h"
 #include "room.h"
 #include "GlobalSphere.h"
+#include "reflection.h"
 
 using namespace std;
 
@@ -69,10 +70,11 @@ void drawScene() {
 	GLfloat ambientLight[] = { 0.2f, 0.2f, 0.2f, 1.0f };
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
 
-	Room::createRoom();
 	Table::drawTable();
 	GlobalSphere::drawGlobalSphere();
 	//GlobalSphere::drawStand();
+	Reflection::drawReflection();
+	Room::createRoom();
 	glutSwapBuffers();
 }
 
