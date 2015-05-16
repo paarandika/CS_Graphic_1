@@ -10,15 +10,16 @@ GlobalSphere::~GlobalSphere() {
 
 void GlobalSphere::drawStand()
 {
-	/*glBegin(GL_QUADS);
+	//glBegin(GL_QUADS);
 
-	glNormal3f(-3.0f, 2.0f, 3.0f);
+	/*glNormal3f(-3.0f, 2.0f, 3.0f);
 	glVertex3f(-3.0f, 1.0f, 0.0f);
 	glVertex3f(-3.2f, 1.0f, 0.0f);
 	glVertex3f(-3.4f, 1.0f, 0.0f);
 	glVertex3f(-3.0f, 1.0f, 3.0f);
 
 	glEnd();*/
+
 }
 
 
