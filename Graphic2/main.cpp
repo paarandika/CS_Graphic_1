@@ -72,7 +72,7 @@ void drawScene() {
 	Room::createRoom();
 	Table::drawTable();
 	GlobalSphere::drawGlobalSphere();
-	//GlobalSphere::drawStand();
+	GlobalSphere::drawStand();
 	glutSwapBuffers();
 }
 
