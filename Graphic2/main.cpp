@@ -8,6 +8,8 @@
 #include "table.h"
 #include "room.h"
 #include "GlobalSphere.h"
+#include "fan.h"
+#include "reflection.h"
 
 using namespace std;
 
@@ -38,7 +40,7 @@ void initRendering() {
 	glEnable(GL_LIGHT0); //Enable light #0
 	//glEnable(GL_LIGHT1); //Enable light #1
 	glEnable(GL_NORMALIZE);
-	glEnable(GL_BLEND); //Enable alpha blending
+	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Set the blend function
 }
 
@@ -65,21 +67,28 @@ void drawScene() {
 	gluLookAt(camPos[camX], camPos[camY], camPos[camZ],
 		camLook[camLookX], camLook[camLookY], camLook[camLookZ],
 		0.0f, 1.0f, 0.0f);
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_LEQUAL);
 
-	//glColor3f(1.0f, 1.0f, 0.0f);
-	Room::createRoom();
+	GLfloat ambientLight[] = { 0.2f, 0.2f, 0.2f, 1.0f };
+	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
+
+	
 	Table::drawTable();
 	GlobalSphere::drawGlobalSphere();
+<<<<<<< HEAD
 	GlobalSphere::drawStand();
+=======
+	Fan::drawFan();
+	//GlobalSphere::drawStand();
+	Reflection::drawReflection();
+	Room::createRoom();
+>>>>>>> f0f3d47e5ea6017aa642d073667244abc07f2d13
 	glutSwapBuffers();
 }
 
 int main(int argc, char** argv) {
 	//Initialize GLUT
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH | GLUT_STENCIL);
 	glutInitWindowSize(800, 600);
 
 	glutCreateWindow("Computer Graphics - Scene 1");

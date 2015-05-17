@@ -3,11 +3,11 @@
 #include "imageloader.h"
 #include "texture.h"
 
-class Room {
+class Fan {
 public:
-	Room();
-	~Room();
-	static void createRoom();
-	static void drawFloor();
+	Fan();
+	~Fan();
+	static void drawFan();
+
 };
 
