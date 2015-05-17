@@ -10,7 +10,6 @@ public:
 	~GlobalSphere();
 	static void drawGlobalSphere();
 	static void drawStand();
-	static void DrawArc();
 	
 };
 

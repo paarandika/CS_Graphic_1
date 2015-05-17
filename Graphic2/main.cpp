@@ -73,15 +73,11 @@ void drawScene() {
 
 	
 	Table::drawTable();
-	GlobalSphere::drawGlobalSphere();
-<<<<<<< HEAD
-	GlobalSphere::drawStand();
-=======
 	Fan::drawFan();
-	//GlobalSphere::drawStand();
+	GlobalSphere::drawGlobalSphere();
+	GlobalSphere::drawStand();
 	Reflection::drawReflection();
 	Room::createRoom();
->>>>>>> f0f3d47e5ea6017aa642d073667244abc07f2d13
 	glutSwapBuffers();
 }
 

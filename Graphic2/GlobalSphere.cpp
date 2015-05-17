@@ -9,29 +9,32 @@ GlobalSphere::GlobalSphere() {
 GlobalSphere::~GlobalSphere() {
 }
 
-void GlobalSphere::DrawArc()
-{
-	
-	//glColor3f(0.0, 0.0, 1.0);
-	glTranslatef(-3.0f, 3.0f, 3.0f);
-	glRotatef(67.0f, -6.0f, 3.0f, 2.0f);/* draw torus with given color    */
-	glutSolidTorus(0.2, 0.6, 20, 20);
-}
 
 
 void GlobalSphere::drawStand()
 {
-	GLUquadricObj *quadratic;
-	quadratic = gluNewQuadric();
-	glTranslatef(-3.0f, 0.0f, 3.0f);
-	glRotatef(113.0f, -3.0f, 2.0f, 3.0f);
-	gluCylinder(quadratic, 0.9f, 0.3f, 0.6f, 32, 32);
 	
-	//DrawArc();
-	glTranslatef(-2.0f, 1.0f, 2.0f);
-	glRotatef(270.0f, -3.0f, 1.0f, -3.0f);
-	gluPartialDisk(quadratic, 1.5, 2.0, 20, 4, 0.0, 180.0);/* draw torus with given color    */
-	//glutSolidTorus(0.2, 0.6, 20, 20);
+	GLUquadricObj *quadratic;
+	glPushMatrix();
+	
+	glTranslatef(-3.0f, 0.0f, 3.0f);
+	glColor3f(0.1, 0.1, 0.1);
+	glRotatef(113.0f, -3.0f, 2.0f, 3.0f);
+	glutSolidCone(0.7f, 0.8f, 32, 32);
+	glPopMatrix();
+	
+	//DrawArc
+	glPushMatrix();
+	glTranslatef(-3.0f, 2.4f, 3.3f);
+	glRotatef(0.0f, 3.0f, 1.0f, 0.0f);
+	quadratic = gluNewQuadric();
+	gluPartialDisk(quadratic, 1.55, 1.8, 20, 4, 0.0, 190.0);
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(-3.0f,2.0f, 3.0f);
+	gluCylinder(quadratic, 0.3f, 0.3f, 0.7f, 32, 32);
+	glPopMatrix();
 
 
 }
