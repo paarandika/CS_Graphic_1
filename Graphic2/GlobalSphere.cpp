@@ -16,7 +16,7 @@ void GlobalSphere::drawStand()
 	
 	GLUquadricObj *quadratic;
 	glPushMatrix();
-	
+	//Draw stand - Cone
 	glTranslatef(-3.0f, 0.0f, 3.0f);
 	glColor3f(0.1, 0.1, 0.1);
 	glRotatef(113.0f, -3.0f, 2.0f, 3.0f);
@@ -31,19 +31,13 @@ void GlobalSphere::drawStand()
 	gluPartialDisk(quadratic, 1.55, 1.8, 20, 4, 0.0, 190.0);
 	glPopMatrix();
 
-	glPushMatrix();
-	glTranslatef(-3.0f,2.0f, 3.0f);
-	gluCylinder(quadratic, 0.3f, 0.3f, 0.7f, 32, 32);
-	glPopMatrix();
-
-
 }
 
 
 
 
 void GlobalSphere::drawGlobalSphere() {
-	// Draw body (a 20x20 spherical mesh of radius 0.75 at height 0.75)
+	//Put the texture to the globe
 	Image* image = loadBMP("res/world-map.bmp");
 	GLuint	_textureId = Texture::loadTexture(image);
 	delete image;
@@ -53,7 +47,7 @@ void GlobalSphere::drawGlobalSphere() {
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
+	//Draw the sphere
 	GLUquadric *quad = gluNewQuadric();
 	glPushMatrix();
 	glTranslatef(-3.0f, 2.5f, 3.0f);
