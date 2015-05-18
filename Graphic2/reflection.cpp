@@ -31,6 +31,9 @@ void Reflection::drawReflection() {
 	glTranslatef(28, 0, 0);
 	Table::drawTable();
 	Room::drawFloor();
+	Fan::drawFan();
+	GlobalSphere::drawGlobalSphere();
+	GlobalSphere::drawStand();
 	glPopMatrix();
 
 	glPushMatrix();
@@ -38,6 +41,9 @@ void Reflection::drawReflection() {
 	glTranslatef(-40, 0, 0);
 	Table::drawTable();
 	Room::drawFloor();
+	Fan::drawFan();
+	GlobalSphere::drawGlobalSphere();
+	GlobalSphere::drawStand();
 	glPopMatrix();
 
 	glPushMatrix();
@@ -45,6 +51,9 @@ void Reflection::drawReflection() {
 	glTranslatef(0, 0, 36);
 	Table::drawTable();
 	Room::drawFloor();
+	Fan::drawFan();
+	GlobalSphere::drawGlobalSphere();
+	GlobalSphere::drawStand();
 	glPopMatrix();
 
 	glPushMatrix();
@@ -52,6 +61,9 @@ void Reflection::drawReflection() {
 	glTranslatef(0, 0, -36);
 	Table::drawTable();
 	Room::drawFloor();
+	Fan::drawFan();
+	GlobalSphere::drawGlobalSphere();
+	GlobalSphere::drawStand();
 	glPopMatrix();
 
 	glDisable(GL_STENCIL_TEST);
