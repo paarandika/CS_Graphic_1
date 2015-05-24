@@ -26,7 +26,7 @@ void Table::drawTable() {
 
 	GLfloat param[4] = { 0.992157, 0.941176, 0.807843, 1.0 };
 	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, param);
-
+	glMaterialf(GL_FRONT, GL_SHININESS, 0);
 	//Front
 	glNormal3f(0.0f, 0.0f, 1.0f);
 	glTexCoord2f(0.0f, -0.2f);
