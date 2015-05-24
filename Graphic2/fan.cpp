@@ -14,14 +14,29 @@ GLUquadricObj *qobj;
 float lngh; float width; float depth;
 int i;
 void box(float lngh, float width, float depth);
+void Fan_Physics();
+static int running = 1;
 
-static int running = 0;
+void Fan_Physics(void)
+{
+	if (running == 1)
+		speed = speed + 0.9;
+	if (speed > 360.0)
+		speed = 360.0;
+	if (running == 0)
+		speed = speed - 1.8;
+	if (speed < 0)
+		speed = 0;
+	spin = spin + speed / 100;
+	//glutPostRedisplay(); 
+
+}
 
 void Fan::drawFan()
 {
 	glPushMatrix();
 	/* Fan*/
-	glTranslatef(3.0f, 0.0f, -6.0f);//Fan position
+	glTranslatef(-2.0f, 0.0f, 3.0f);//Fan position
 	glRotatef(140.0f, 0.0f, 1.0f, 0.0f);//Rotate fan
 	glPushMatrix();
 	//**********************************************
@@ -97,6 +112,7 @@ void Fan::drawFan()
 		glRotatef(-45, 1.0, 0.0, 0.0);
 		glShadeModel(GL_FLAT);
 		glPushMatrix();
+		
 		box(0.8, 0.3, 0.08);
 		//glEnable(GL_LIGHTING);
 		glPopMatrix();
