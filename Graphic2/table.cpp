@@ -10,6 +10,7 @@ Table::~Table() {
 
 
 void Table::drawTable() {
+	glPushMatrix();
 	glColor3f(1.0, 1.0, 1.0);
 
 	Image* image = loadBMP("res/wood.bmp");
@@ -23,7 +24,7 @@ void Table::drawTable() {
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	glBegin(GL_QUADS);
-
+	glDisable(GL_COLOR_MATERIAL);
 	GLfloat param[4] = { 0.992157, 0.941176, 0.807843, 1.0 };
 	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, param);
 
@@ -99,9 +100,10 @@ void Table::drawTable() {
 	param[2] = 0;
 	param[3] = 0;
 	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, param);
-
+	glEnable(GL_COLOR_MATERIAL);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
 	//front right leg
 	drawLeg(3.0f, 7.0f);
 
