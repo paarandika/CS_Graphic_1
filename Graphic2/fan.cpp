@@ -13,6 +13,8 @@ GLUquadricObj *qobj;
 float lngh; float width; float depth;
 int i;
 double angle = 0;
+double neck_angle = 0;
+double side = 0.5;
 void box(float lngh, float width, float depth);
 //void Fan_Physics();
 
@@ -20,9 +22,13 @@ void box(float lngh, float width, float depth);
 
 void Fan::Fan_physics(int n)
 {
-	angle = angle + 0.5;
+	angle = angle + 2.0;
 	if (angle >= 360){
 		angle = 0;
+	}
+	neck_angle = neck_angle + side;
+	if (neck_angle >= 20 || neck_angle <= -20){
+		side = -side;
 	}
 	glutPostRedisplay();
 	glutTimerFunc(5, Fan::Fan_physics, 0);
@@ -60,13 +66,14 @@ void Fan::drawFan()
 	gluQuadricDrawStyle(qobj, GLU_FILL); /* smooth shaded */
 	gluQuadricNormals(qobj, GLU_SMOOTH);
 	glTranslatef(0.0, 4.5, 0.0);
+	glRotatef(neck_angle, 0.0, 1.0, 0.0);
 	glScalef(0.5, 0.5, 1);
 	glEnable(GL_NORMALIZE);
 	gluSphere(qobj, 1, 20, 20);
-	glPopMatrix();
+	
 	//casing back
 
-	glTranslatef(0.0, 4.5, 0.3);
+	glTranslatef(0.0, 0.0, 0.4);
 	glRotatef(spin, 0.0, 0.0, 1.0);
 	for (i = 1; i <= 360; i = i + 20)
 
@@ -77,7 +84,7 @@ void Fan::drawFan()
 		glRotatef(-45, 1.0, 0.0, 0.0);
 		glShadeModel(GL_FLAT);
 		glPushMatrix();
-		box(2.0, 0.02, 0.01);
+		box(4.0, 0.02, 0.01);
 		//glEnable(GL_LIGHTING);
 		glPopMatrix();
 		glPopMatrix();
@@ -85,10 +92,10 @@ void Fan::drawFan()
 	}
 	//Outer Casing
 	glPushMatrix();
-	gluCylinder(qobj, 2.5f, 2.6f, 0.4f, 64, 64);
+	gluCylinder(qobj, 4.5f, 4.6f, 0.4f, 64, 64);
 	glRotatef(180.0f, 1.0f, 0.0f, 0.0f);
 	glTranslatef(0.0f, 0.0f, -0.8f);
-	gluCylinder(qobj, 2.5f, 2.6f, 0.4f, 64, 64);
+	gluCylinder(qobj, 4.5f, 4.6f, 0.4f, 64, 64);
 
 
 	glPopMatrix();
@@ -105,12 +112,12 @@ void Fan::drawFan()
 	{
 		glPushMatrix();
 		glRotatef(i, 0.0, 0.0, 1.0);
-		glTranslatef(1.5, 0.0, 0.0);
-		glRotatef(-45, 1.0, 0.0, 0.0);
+		glTranslatef(2.0, 0.0, 0.0);
+		glRotatef(-5, 1.0, 0.0, 0.0);
 		glShadeModel(GL_FLAT);
 		glPushMatrix();
-		
-		box(0.8, 0.3, 0.08);
+
+		box(2.3, 0.4, 0.06);
 		//glEnable(GL_LIGHTING);
 		glPopMatrix();
 		glPopMatrix();
@@ -119,7 +126,7 @@ void Fan::drawFan()
 	glPopMatrix();
 	//casing front
 
-	glTranslatef(0.0, 0.0, 0.3);
+	glTranslatef(0.0, 0.0, 0.8);
 	glRotatef(0.0, 0.0, 0.0, 1.0);
 
 	for (i = 1; i <= 360; i = i + 20)
@@ -131,13 +138,13 @@ void Fan::drawFan()
 		glRotatef(-45, 1.0, 0.0, 0.0);
 		glShadeModel(GL_FLAT);
 		glPushMatrix();
-		box(2.0, 0.02, 0.01);
+		box(4.0, 0.02, 0.01);
 		glPopMatrix();
 		glPopMatrix();
 
 	}
 	glPopMatrix();
-
+	glPopMatrix();
 }
 
 
