@@ -171,8 +171,7 @@ int main(int argc, char** argv) {
 	glutCreateWindow("Computer Graphics - Scene 1");
 	initRendering();
 	glutDisplayFunc(drawScene);
-	glutTimerFunc(5,Fan::Fan_physics,5);
-	//glutIdleFunc(Fan::Fan_physics);
+	glutTimerFunc(5,Fan::Fan_physics,0);
 	glutKeyboardFunc(handleKeypress);
 	glutSpecialFunc(processSpecialKeys);
 	glutReshapeFunc(handleResize);

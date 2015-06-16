@@ -20,12 +20,12 @@ void box(float lngh, float width, float depth);
 
 void Fan::Fan_physics(int n)
 {
-	angle = angle + 1;
+	angle = angle + 0.5;
 	if (angle >= 360){
 		angle = 0;
 	}
 	glutPostRedisplay();
-	glutTimerFunc(5, Fan::Fan_physics, 5);
+	glutTimerFunc(5, Fan::Fan_physics, 0);
 }
 
 void Fan::drawFan()
