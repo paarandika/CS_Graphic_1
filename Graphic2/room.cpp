@@ -12,11 +12,11 @@ Room::~Room() {
 void Room::createRoom() {
 	drawFloor();
 	glPushMatrix();
-	glColor4f(0.3281, 0.7109, 0.9726, 0.7);
+	glColor4f(0.3281, 0.7109, 0.9726, 0.4);
 	glBegin(GL_QUADS);
 	glDisable(GL_COLOR_MATERIAL);
 	GLfloat param[4] = { 1, 1, 1, 1.0 };
-	GLfloat materialColor[] = { 0.3281, 0.7109, 0.9726, 0.2};
+	GLfloat materialColor[] = { 0.3281, 0.7109, 0.9726, 0.7};
 
 	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, materialColor);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, param);

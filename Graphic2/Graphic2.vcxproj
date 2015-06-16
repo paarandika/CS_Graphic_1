@@ -88,6 +88,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="reflection.h" />
     <ClInclude Include="room.h" />
+    <ClInclude Include="sunMoon.h" />
     <ClInclude Include="table.h" />
     <ClInclude Include="texture.h" />
   </ItemGroup>
@@ -98,6 +99,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="reflection.cpp" />
     <ClCompile Include="room.cpp" />
+    <ClCompile Include="sunMoon.cpp" />
     <ClCompile Include="table.cpp" />
     <ClCompile Include="texture.cpp" />
   </ItemGroup>
