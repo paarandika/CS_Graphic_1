@@ -10,10 +10,11 @@
 #include "GlobalSphere.h"
 #include "fan.h"
 #include "reflection.h"
+#include "sunMoon.h"
 
 using namespace std;
 
-int camX = 0, camY = 1, camZ = 2, camLookX = 0, camLookY = 1, camLookZ = 2, rotatex=0, rotatey=0;
+int camX = 0, camY = 1, camZ = 2, camLookX = 0, camLookY = 1, camLookZ = 2, rotatex = 0, rotatey = 0, rotation = 0;
 
 float camPos[] = { -14.0f, 12.0f, 18.0f, 20.0f, 12.0f, -18.0f, 20.0f, -6.0f, 18.0f };
 float camLook[] = {  3, 0, 0, 0, 0, 0,0, 5, 0 };
@@ -119,8 +120,9 @@ void initRendering() {
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_COLOR_MATERIAL);
 	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0); //Enable light #0
-	//glEnable(GL_LIGHT1); //Enable light #1
+	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT1); 
+	glEnable(GL_LIGHT2);
 	glEnable(GL_NORMALIZE);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Set the blend function
@@ -150,7 +152,8 @@ void drawScene() {
 	glRotatef(rotatex, 1, 0, 0);
 	glRotatef(rotatey, 0, 1, 0);
 	GLfloat ambientLight[] = { 0.2f, 0.2f, 0.2f, 1.0f };
-	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
+	//glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
+	SunMoon::sunMoon(rotation);
 	Table::drawTable();
 	Fan::drawFan();
 	GlobalSphere::drawGlobalSphere();
@@ -161,7 +164,11 @@ void drawScene() {
 	
 }
 
-
+void rotator(int value) {
+	rotation = (rotation + 5) % 360;
+	glutPostRedisplay();
+	glutTimerFunc(1000, rotator, 0);
+}
 int main(int argc, char** argv) {
 	//Initialize GLUT
 	glutInit(&argc, argv);
@@ -172,6 +179,7 @@ int main(int argc, char** argv) {
 	initRendering();
 	glutDisplayFunc(drawScene);
 	glutTimerFunc(5,Fan::Fan_physics,0);
+	glutTimerFunc(1000, rotator, 0);
 	glutKeyboardFunc(handleKeypress);
 	glutSpecialFunc(processSpecialKeys);
 	glutReshapeFunc(handleResize);
