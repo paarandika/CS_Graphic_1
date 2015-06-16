@@ -8,28 +8,24 @@ Fan::~Fan() {
 }
 
 static GLfloat spin = 0.0;
-static GLfloat speed = 0.0;
 GLUquadricObj *qobj;
 //GLfloat lngh ; GLfloat width ; GLfloat depth ;
 float lngh; float width; float depth;
 int i;
+double angle = 0;
 void box(float lngh, float width, float depth);
-void Fan_Physics();
-static int running = 1;
+//void Fan_Physics();
 
-void Fan_Physics(void)
+
+
+void Fan::Fan_physics(int n)
 {
-	if (running == 1)
-		speed = speed + 0.9;
-	if (speed > 360.0)
-		speed = 360.0;
-	if (running == 0)
-		speed = speed - 1.8;
-	if (speed < 0)
-		speed = 0;
-	spin = spin + speed / 100;
-	//glutPostRedisplay(); 
-
+	angle = angle + 1;
+	if (angle >= 360){
+		angle = 0;
+	}
+	glutPostRedisplay();
+	glutTimerFunc(5, Fan::Fan_physics, 5);
 }
 
 void Fan::drawFan()
@@ -101,8 +97,9 @@ void Fan::drawFan()
 
 	//**********************************************
 	// Fan Blades:
+	glPushMatrix();
 	glTranslatef(0.0, 0.0, 0.5);
-	glRotatef(spin, 0.0, 0.0, 1.0);
+	glRotatef(angle, 0.0, 0.0, 1.0);
 	for (i = 1; i <= 360; i = i + 60)
 
 	{
@@ -119,10 +116,11 @@ void Fan::drawFan()
 		glPopMatrix();
 
 	}
+	glPopMatrix();
 	//casing front
 
 	glTranslatef(0.0, 0.0, 0.3);
-	glRotatef(spin, 0.0, 0.0, 1.0);
+	glRotatef(0.0, 0.0, 0.0, 1.0);
 
 	for (i = 1; i <= 360; i = i + 20)
 
