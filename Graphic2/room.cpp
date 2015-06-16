@@ -11,7 +11,8 @@ Room::~Room() {
 
 void Room::createRoom() {
 	drawFloor();
-	glColor4f(0.3281, 0.7109, 0.9726, 0.6);
+	glPushMatrix();
+	glColor4f(0.3281, 0.7109, 0.9726, 0.7);
 	glBegin(GL_QUADS);
 	glDisable(GL_COLOR_MATERIAL);
 	GLfloat param[4] = { 1, 1, 1, 1.0 };
@@ -63,7 +64,8 @@ void Room::createRoom() {
 	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, param);
 	glEnable(GL_COLOR_MATERIAL);
 	glEnd();
-
+	glPopMatrix();
+	glMaterialf(GL_FRONT, GL_SHININESS, 0);
 }
 void Room::drawFloor() {
 	Image* image = loadBMP("res/floor.bmp");
