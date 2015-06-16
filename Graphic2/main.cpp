@@ -124,6 +124,7 @@ void initRendering() {
 	glEnable(GL_NORMALIZE);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Set the blend function
+	
 }
 
 void handleResize(int w, int h) {
@@ -150,8 +151,6 @@ void drawScene() {
 	glRotatef(rotatey, 0, 1, 0);
 	GLfloat ambientLight[] = { 0.2f, 0.2f, 0.2f, 1.0f };
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
-
-	
 	Table::drawTable();
 	Fan::drawFan();
 	GlobalSphere::drawGlobalSphere();
@@ -159,7 +158,9 @@ void drawScene() {
 	Reflection::drawReflection();
 	Room::createRoom();
 	glutSwapBuffers();
+	
 }
+
 
 int main(int argc, char** argv) {
 	//Initialize GLUT
@@ -169,8 +170,8 @@ int main(int argc, char** argv) {
 
 	glutCreateWindow("Computer Graphics - Scene 1");
 	initRendering();
-
 	glutDisplayFunc(drawScene);
+	glutTimerFunc(5,Fan::Fan_physics,0);
 	glutKeyboardFunc(handleKeypress);
 	glutSpecialFunc(processSpecialKeys);
 	glutReshapeFunc(handleResize);

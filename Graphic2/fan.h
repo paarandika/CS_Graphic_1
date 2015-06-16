@@ -8,6 +8,7 @@ public:
 	Fan();
 	~Fan();
 	static void drawFan();
+	static void Fan_physics(int n);
 
 };
 
