@@ -121,7 +121,7 @@ void Table::drawLeg(float xOffset, float zOffset) {
 
 	Image* image = loadBMP("res/wood2.bmp");
 	GLuint	_textureId = Texture::loadTexture(image);
-
+	delete image;
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, _textureId);
 

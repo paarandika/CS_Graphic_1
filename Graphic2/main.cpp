@@ -151,7 +151,7 @@ void drawScene() {
 		0.0f, 1.0f, 0.0f);
 	glRotatef(rotatex, 1, 0, 0);
 	glRotatef(rotatey, 0, 1, 0);
-	GLfloat ambientLight[] = { 0.2f, 0.2f, 0.2f, 1.0f };
+	//GLfloat ambientLight[] = { 0.2f, 0.2f, 0.2f, 1.0f };
 	//glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientLight);
 	SunMoon::sunMoon(rotation);
 	Table::drawTable();

@@ -22,7 +22,7 @@ void box(float lngh, float width, float depth);
 
 void Fan::Fan_physics(int n)
 {
-	angle = angle + 2.0;
+	angle = angle + 20.0;
 	if (angle >= 360){
 		angle = 0;
 	}
