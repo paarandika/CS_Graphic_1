@@ -14,7 +14,7 @@ float lngh; float width; float depth;
 int i;
 double angle = 0;
 double neck_angle = 0;
-double side = 0.5;
+double side = 1.0;
 void box(float lngh, float width, float depth);
 //void Fan_Physics();
 
@@ -75,7 +75,7 @@ void Fan::drawFan()
 
 	glTranslatef(0.0, 0.0, 0.4);
 	glRotatef(spin, 0.0, 0.0, 1.0);
-	for (i = 1; i <= 360; i = i + 20)
+	for (i = 1; i <= 360; i = i + 10)
 
 	{
 		glPushMatrix();
@@ -129,7 +129,7 @@ void Fan::drawFan()
 	glTranslatef(0.0, 0.0, 0.8);
 	glRotatef(0.0, 0.0, 0.0, 1.0);
 
-	for (i = 1; i <= 360; i = i + 20)
+	for (i = 1; i <= 360; i = i + 10)
 
 	{
 		glPushMatrix();
